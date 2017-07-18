@@ -2,12 +2,12 @@ class WardrobesController < ApplicationController
 
   # GET: /wardrobes
   get "/wardrobes" do
-    erb :"/wardrobes/index.html"
+    erb :"/wardrobes/index"
   end
 
   # GET: /wardrobes/new
   get "/wardrobes/new" do
-    erb :"/wardrobes/new.html"
+    erb :"/wardrobes/new"
   end
 
   # POST: /wardrobes

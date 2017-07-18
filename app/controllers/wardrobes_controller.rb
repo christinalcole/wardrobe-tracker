@@ -2,18 +2,31 @@ class WardrobesController < ApplicationController
 
   # GET: /wardrobes
   get "/wardrobes" do
-    erb :"/wardrobes/index"
-  end
-
+    if logged_in?
+      @wardrobes = Wardrobe.all
+      erb :"/wardrobes/index"
+    else
+      redirect to "/login"
+    end
+ end
   # GET: /wardrobes/new
   get "/wardrobes/new" do
-    erb :"/wardrobes/new"
+    if logged_in?
+      erb :"wardrobes/new"
+    else
+      redirect to "/login"
+    end
   end
 
   # POST: /wardrobes
   post "/wardrobes" do
-    redirect "/wardrobes"
-  end
+    if params[:item] == ""
+    redirect "/wardrobes/new"
+    else
+     @wardrobe = current.user.wardrobe.create(item: params[:item])
+     redirect to "wardrobes/#{@wardrobe.id}"
+    end
+   end
 
   # GET: /wardrobes/5
   get "/wardrobes/:id" do

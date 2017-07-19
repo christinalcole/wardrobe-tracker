@@ -3,7 +3,7 @@ class WardrobesController < ApplicationController
   # GET: /wardrobes
   get '/wardrobes' do
     if logged_in?
-      @wardrobes = Wardrobe.all
+      @wardrobes = current_user.wardrobes
       erb :'wardrobes/index'
     else
       redirect to '/login'

@@ -30,19 +30,40 @@ class WardrobesController < ApplicationController
    end
 
   # GET: /wardrobes/5
-#   get "/wardrobes/:id" do
-#     erb :"/wardrobes/show.html"
-#   end
-#
+  get "/wardrobes/:id" do
+    if logged_in?
+      @wardrobe = Wardrobe.find_by_id(params[:id])
+    erb :"/wardrobes/show"
+    else
+      redirect to "/login"
+    end
+  end
+
+
 #   # GET: /wardrobes/5/edit
-#   get "/wardrobes/:id/edit" do
-#     erb :"/wardrobes/edit.html"
-#   end
-#
+  get "/wardrobes/:id/edit" do
+    if logged_in?
+      @wardrobe = Wardrobe.find_by_id(params[:id])
+     if @wardrobe.user_id == current_user.id
+      erb :"/wardrobes/edit"
+      else
+      redirect to "/wardrobes"
+    end
+  else redirect to "/login"
+    end
+  end
+
 #   # PATCH: /wardrobes/5
-#   patch "/wardrobes/:id" do
-#     redirect "/wardrobes/:id"
-#   end
+  patch "/wardrobes/:id" do
+    if params[:item] == ""
+    redirect "/wardrobes/#{params[:id]}/edit"
+    else
+      @wardrobe = Wardrobe.find_by_id(params[:id])
+      @wardrobe.item = params[:item]
+      @wardrobe.save
+      redirect "/wardrobes/#{@wardrobe.id}"
+    end
+  end
 #
 #   # DELETE: /wardrobes/5/delete
 #   delete "/wardrobes/:id/delete" do

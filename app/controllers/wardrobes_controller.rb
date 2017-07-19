@@ -21,10 +21,10 @@ class WardrobesController < ApplicationController
 
   # POST: /wardrobes
   post "/wardrobes" do
-    if params[:item] == ""
+    if params[:item] == "" || params[:description] == ""
     redirect "/wardrobes/new"
     else
-     @wardrobe = current_user.wardrobes.create(item: params[:item])
+     @wardrobe = current_user.wardrobes.create(params)
      redirect to "wardrobes/#{@wardrobe.id}"
     end
    end
@@ -76,8 +76,8 @@ class WardrobesController < ApplicationController
       else
        redirect "/wardrobes"
       end
-     else
+      else
        redirect "/login"
-    end
-  end
+      end
+   end
 end

@@ -1,8 +1,8 @@
-<p><%= @wardrobe.item %></p>
+<p><%= @wardrobe.description %> <%= @wardrobe.item %></p>
 
-<form method="post" action="/wardrobes/<%=@wardrobe.id%>/delete">
+<p><form method="post" action="/wardrobes/<%=@wardrobe.id%>/delete">
   <input id="hidden" type="hidden" name="_method" value="DELETE">
-  <input type="submit" value="Delete Wardrobe">
+  <input type="submit" value="Delete Wardrobe Item"></p>
 </form>
 
-<a href="/wardrobes/<%=@wardrobe.id%>/edit">Edit Wardrobe </a>
+<a href="/wardrobes/<%=@wardrobe.id%>/edit">Edit this Wardrobe Item</a>

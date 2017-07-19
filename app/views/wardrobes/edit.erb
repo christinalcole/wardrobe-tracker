@@ -2,6 +2,7 @@
 
 <form method="post" action="/wardrobes/<%=@wardrobe.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
-  <input type="text" name="item" value="<%= @wardrobe.item %>">
+  <p> Item: <input type="text" name="item" value="<%= @wardrobe.item %>"></p>
+  <p> Description: <input type="text" name="description" value="<%= @wardrobe.description %>"></p>
   <input type="submit" value="submit">
 </form>

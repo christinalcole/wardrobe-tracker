@@ -23,9 +23,9 @@
           <p><h2>Welcome, <%=current_user.username %></h2></p>
 
         <% else %>
-          <a href="user/signup">Sign Up</a>
+          <a href="/signup">Sign Up</a>
 
-          <a href="user/login"> Sign In </a>
+          <a href="/login"> Sign In </a>
         <%end %>
 
       <%= yield %>

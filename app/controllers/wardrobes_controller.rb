@@ -60,13 +60,24 @@ class WardrobesController < ApplicationController
     else
       @wardrobe = Wardrobe.find_by_id(params[:id])
       @wardrobe.item = params[:item]
+      @wardrobe.description = params[:description]
       @wardrobe.save
       redirect "/wardrobes/#{@wardrobe.id}"
     end
   end
 #
 #   # DELETE: /wardrobes/5/delete
-#   delete "/wardrobes/:id/delete" do
-#     redirect "/wardrobes"
-#   end
+  delete "/wardrobes/:id/delete" do
+    if logged_in?
+      @wardrobe = Wardrobe.find_by_id(params[:id])
+      if @wardrobe.user_id == current_user.id
+         @wardrobe.delete
+       redirect "/wardrobes"
+     else
+       redirect "/wardrobes"
+      end
+     else
+       redirect "/login"
+    end
+  end
 end

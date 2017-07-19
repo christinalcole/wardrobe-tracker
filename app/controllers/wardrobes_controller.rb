@@ -73,7 +73,7 @@ class WardrobesController < ApplicationController
       if @wardrobe.user_id == current_user.id
          @wardrobe.delete
        redirect "/wardrobes"
-     else
+      else
        redirect "/wardrobes"
       end
      else

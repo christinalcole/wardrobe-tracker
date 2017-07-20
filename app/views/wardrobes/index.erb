@@ -2,6 +2,8 @@
 
 <p><% @wardrobes.each.with_index(1) do |wardrobe, index| %></p>
   <div>
-    <p><%= index %>. <%= wardrobe.description %> <%= wardrobe.item %></p>
+    <p><%= index%>. <%= wardrobe.description %> <%= wardrobe.item %> <% wardrobe.id %></p>
+        <a href="/wardrobes/<%= wardrobe.id %>/edit">Edit this Wardrobe Item</a>
+    <br> </br>
+    <% end %>
   </div>
-<% end %>

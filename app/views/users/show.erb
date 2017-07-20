@@ -1,7 +1,7 @@
-<h1>Welcome </h1>
-<p><% @user.wardrobes.each do |wardrobe| %></p>
+<h2>Your Wardrobe Items</h2>
+
+<p><% @user.wardrobes.each.with_index(1) do |wardrobe, index| %></p>
   <div>
-    <%= wardrobe.item %>
-    <%= wardrobe.description %>
+    <p><%= index %>. <%= wardrobe.description %> <%= wardrobe.item %></p>
   </div>
 <% end %>

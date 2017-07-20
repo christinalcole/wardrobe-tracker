@@ -1,7 +1,9 @@
 <h1>Welcome <%=@user.username %></h1>
 <p><% @user.wardrobes.each do |wardrobe| %></p>
   <div>
+    <ul>
     <%= wardrobe.item %>
     <%= wardrobe.description %>
+    </ul>
   </div>
 <% end %>

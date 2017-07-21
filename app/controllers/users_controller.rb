@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   # GET: /users/signup
   get "/signup" do
     if !logged_in?
-      flash[:message] = "You need to complete all the required fields."
+      flash[:message] = "Complete all required fields."
       erb :"/users/signup"
     else
       redirect to '/wardrobes'

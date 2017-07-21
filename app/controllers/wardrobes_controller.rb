@@ -22,6 +22,7 @@ class WardrobesController < ApplicationController
   # POST: /wardrobes
   post "/wardrobes" do
     if params[:item] == "" || params[:description] == ""
+      # flash[:message] = "You need to complete all the required fields."
     redirect "/wardrobes/new"
     else
      @wardrobe = current_user.wardrobes.create(params)

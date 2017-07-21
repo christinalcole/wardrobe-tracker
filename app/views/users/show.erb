@@ -3,5 +3,6 @@
 <p><% @user.wardrobes.each.with_index(1) do |wardrobe, index| %></p>
   <div>
     <p><%= index %>. <%= wardrobe.description %> <%= wardrobe.item %></p>
+
   </div>
-<% end %>
+  <% end %>

@@ -1,16 +1,14 @@
 class WardrobesController < ApplicationController
 
-  # GET: /wardrobes
-  get '/wardrobes' do
+  get "/wardrobes" do
     if logged_in?
       @wardrobes = current_user.wardrobes
-      erb :'wardrobes/index'
+      erb :"wardrobes/index"
     else
-      redirect to '/login'
+      redirect to "/login"
     end
   end
 
-  # GET: /wardrobes/new
   get "/wardrobes/new" do
     if logged_in?
       erb :"wardrobes/new"
@@ -19,7 +17,6 @@ class WardrobesController < ApplicationController
     end
   end
 
-  # POST: /wardrobes
   post "/wardrobes" do
     if params[:item] == "" || params[:description] == ""
       flash[:message] = "You need to complete all the required fields."
@@ -30,18 +27,15 @@ class WardrobesController < ApplicationController
     end
    end
 
-  # GET: /wardrobes/5
   get "/wardrobes/:id" do
     if logged_in?
       @wardrobe = Wardrobe.find_by_id(params[:id])
-    erb :"/wardrobes/show"
+      erb :"/wardrobes/show"
     else
       redirect to "/login"
     end
   end
 
-
-#   # GET: /wardrobes/5/edit
   get "/wardrobes/:id/edit" do
     if logged_in?
       @wardrobe = Wardrobe.find_by_id(params[:id])
@@ -50,11 +44,10 @@ class WardrobesController < ApplicationController
       else
       redirect to "/wardrobes"
     end
-  else redirect to "/login"
+      else redirect to "/login"
     end
   end
 
-#   # PATCH: /wardrobes/5
   patch "/wardrobes/:id" do
     if params[:item] == ""
     redirect "/wardrobes/#{params[:id]}/edit"
@@ -66,8 +59,7 @@ class WardrobesController < ApplicationController
       redirect "/wardrobes/#{@wardrobe.id}"
     end
   end
-#
-#   # DELETE: /wardrobes/5/delete
+
   delete "/wardrobes/:id/delete" do
     if logged_in?
       @wardrobe = Wardrobe.find_by_id(params[:id])

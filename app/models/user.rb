@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :username, :email, presence: true
   validates :username, uniqueness: true
   validates :email, uniqueness: true
-  validates :password, length: { minimum: 5 }
+
 
   def slug
     self.username.strip.downcase.gsub(" ", "-")
@@ -15,5 +15,5 @@ class User < ActiveRecord::Base
     name = slug.split("-").map { |word| word.downcase }.join(" ")
     self.all.find { |instance| instance.username.downcase == name }
   end
-
+  
 end

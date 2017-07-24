@@ -2,9 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many :wardrobes
 
-  validates :username, presence: true
   validates :email, presence: true
-  validates :password, presence: true
+  validates :password, length: { minimum: 5 }
 
   def slug
     self.username.strip.downcase.gsub(" ", "-")
